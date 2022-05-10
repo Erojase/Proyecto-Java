@@ -2,4 +2,4 @@
 ## Como descargarlo y abrirlo en Eclipse
 ------
 1.Seguir los pasos de la imagen
-![La imagen no se ve](https://github.com/Erojase/descargar.png)
+![La imagen no se ve](https://github.com/Erojase/Proyecto-Java/blob/main/descargar.png)
