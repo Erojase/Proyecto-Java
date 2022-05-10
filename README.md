@@ -5,4 +5,4 @@
 ------
 ![La imagen no se ve](https://github.com/Erojase/Proyecto-Java/blob/main/descargar.png)
 ------
-2.Mover el .zip al workspace de Eclipse y extraerlos ahí
+## 2.Mover el .zip al workspace de Eclipse y extraerlos ahí
