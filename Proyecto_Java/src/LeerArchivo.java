@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 public class LeerArchivo {
 	
-	private File miarchivo;
-	private Scanner lector;
+	private File miarchivo, historia;
+	private Scanner lectorP, lectorH;
 	
 	public LeerArchivo() {
 		super();
 		try {
 			miarchivo = new File("src/frases.txt");
-			lector = new Scanner(miarchivo);
+			historia = new File("src/historia.txt");
+			lectorP = new Scanner(miarchivo);
+			lectorH = new Scanner(historia);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -20,8 +22,8 @@ public class LeerArchivo {
 
 	public String get_frase(int linea) {
 		int cont = 0;
-		while (lector.hasNextLine()) {
-	        String data = lector.nextLine();
+		while (lectorP.hasNextLine()) {
+	        String data = lectorP.nextLine();
 	        cont++;
 	        if(cont == linea) {
 	        	return data;
