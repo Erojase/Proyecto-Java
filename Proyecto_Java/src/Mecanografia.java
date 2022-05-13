@@ -64,6 +64,8 @@ public class Mecanografia extends JFrame {
 	 * Create the frame.
 	 */
 	public void practica() {
+		LeerArchivo file = new LeerArchivo();
+		frase = "<html>"+file.get_frase(1)+"</html>";
 		btnPrcEmpezar.setVisible(false);
 		lblPrcTitle.setVisible(false);
 		lblMuestra.setVisible(true);
