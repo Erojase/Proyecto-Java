@@ -34,7 +34,6 @@ public class Mecanografia extends JFrame {
 	private JButton btnPrcEmpezar;
 	
 	private String frase = "<html>buenas tardes por la mañana, es un gran dia y me quiero morir</html>";
-	private String fraseFormat;
 	private JTextField txtEscribir = new JTextField();
 	private final JLabel lblTimer = new JLabel("");
 	private boolean once = true;
@@ -63,15 +62,24 @@ public class Mecanografia extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public void practica() {
+	
+	public void nueva_frase() {
 		LeerArchivo file = new LeerArchivo();
-		frase = "<html>"+file.get_frase(1)+"</html>";
+		int random = (int)(Math.random()*3+1);
+		frase = "<html>"+file.get_frase(random)+"</html>";
+		lblMuestra.setText(frase);
+		txtEscribir.setText("");
+	}
+	
+	public void practica() {
+		
+		
 		btnPrcEmpezar.setVisible(false);
 		lblPrcTitle.setVisible(false);
 		lblMuestra.setVisible(true);
 		txtEscribir.setVisible(true);
 		
-		lblMuestra.setText(frase);
+		nueva_frase();
 			txtEscribir.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyReleased(KeyEvent e) {
@@ -102,6 +110,8 @@ public class Mecanografia extends JFrame {
 	}
 	
 	public Mecanografia() {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 
@@ -143,7 +153,7 @@ public class Mecanografia extends JFrame {
 		
 		lblMuestra.setVisible(false);
 		lblMuestra.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblMuestra.setBounds(getWidth()*2-300, getHeight()*2-200, 1000, 50);
+		lblMuestra.setBounds(getWidth()*2-300, getHeight()*2-200, 1000, 100);
 		practica.add(lblMuestra);
 		
 		btnPrcEmpezar = new JButton("Empezar");
@@ -173,6 +183,9 @@ public class Mecanografia extends JFrame {
 				else {
 					lblMuestra.setText(labelPrc);
 					txtEscribir.setText(TypedPrc.substring(0,TypedPrc.length()-1));
+				}
+				if (frase.length()-13 == TypedPrc.length()) {
+					nueva_frase();
 				}
 				//System.out.println("longi es: "+longi);
 				//System.out.println(labelPrc.substring(6, longi+6)+" es igual a "+TypedPrc);

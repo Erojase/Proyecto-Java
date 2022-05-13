@@ -17,12 +17,7 @@ public class LeerArchivo {
 		}
 	}
 	
-	public void siguente_linea() {
-		while (lector.hasNextLine()) {
-	        String data = lector.nextLine();
-	        System.out.println(data);
-	      }
-	}
+
 	public String get_frase(int linea) {
 		int cont = 0;
 		while (lector.hasNextLine()) {
@@ -34,9 +29,5 @@ public class LeerArchivo {
 	      }
 		return "";
 	}
-	
-	public static void main(String[] args) {  
-		LeerArchivo run = new LeerArchivo();
-		run.siguente_linea();
-	}
+
 }
