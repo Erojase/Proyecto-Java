@@ -30,15 +30,19 @@ public class Mecanografia extends JFrame {
 	private JButton btnToHst = new JButton("Modo Historia");
 	private final JLabel lblPrcTitle = new JLabel("Zona de Pr\u00E1ctica");
 	private final JLabel lblZonaDeHistoria = new JLabel("Zona de Historia");
-	private JLabel lblMuestra;
+	private JLabel lblMuestra = new JLabel("Texto de muestra");
 	private JButton btnPrcEmpezar;
 	
-	private String frase = "buenas tardes por la mañana, es un gran dia y me quiero morir";
-	private JTextField txtEscribir;
+	private String frase = "<html>buenas tardes por la mañana, es un gran dia y me quiero morir</html>";
+	private String fraseFormat;
+	private JTextField txtEscribir = new JTextField();
 	private final JLabel lblTimer = new JLabel("");
 	private boolean once = true;
 	private int segundo = 0, minuto = 0, hora = 0;
 	
+	private String labelPrc;
+	private String TypedPrc;
+	private int longi = 0;
 
 	/**
 	 * Launch the application.
@@ -87,6 +91,8 @@ public class Mecanografia extends JFrame {
 					}, 0, 1000);
 					}
 					once = false;
+					
+					
 				}
 			});
 		
@@ -132,10 +138,10 @@ public class Mecanografia extends JFrame {
 		
 		practica.add(lblPrcTitle);
 		
-		lblMuestra = new JLabel("Texto de muestra");
+		
 		lblMuestra.setVisible(false);
 		lblMuestra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMuestra.setBounds(303, 29, 427, 32);
+		lblMuestra.setBounds(303, 29, 547, 48);
 		practica.add(lblMuestra);
 		
 		btnPrcEmpezar = new JButton("Empezar");
@@ -147,7 +153,28 @@ public class Mecanografia extends JFrame {
 		btnPrcEmpezar.setBounds(168, 165, 89, 23);
 		practica.add(btnPrcEmpezar);
 		
-		txtEscribir = new JTextField();
+		
+		txtEscribir.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				TypedPrc = txtEscribir.getText().toString();
+				longi = TypedPrc.length();
+				String html, trozo1, trozo2;
+				if (frase.substring(6, longi+6).equals(TypedPrc)) {
+					html = frase.substring(0,6);
+					trozo1 = frase.substring(6,longi+6);
+					trozo2 = frase.substring(longi+6,frase.length());
+					labelPrc = html + "<font color=\"red\">" + trozo1 + "</font>" + trozo2;
+					lblMuestra.setText(labelPrc);
+					System.out.println(labelPrc);
+				}
+				else {
+					lblMuestra.setText(labelPrc);
+				}
+				//System.out.println("longi es: "+longi);
+				//System.out.println(labelPrc.substring(6, longi+6)+" es igual a "+TypedPrc);
+			}
+		});
 		txtEscribir.setVisible(false);
 		txtEscribir.setBounds(328, 178, 305, 20);
 		practica.add(txtEscribir);
