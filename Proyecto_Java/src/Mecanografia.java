@@ -119,7 +119,7 @@ public class Mecanografia extends JFrame {
 				cl.show(main, "prc");
 			}
 		});
-		btnToPrc.setBounds(getWidth() , getHeight(), 150, 57);
+		btnToPrc.setBounds(getWidth()*2-280 , getHeight()*2, 250, 100);
 		
 		Pprincipal.add(btnToPrc);
 		btnToHst.addActionListener(new ActionListener() {
@@ -129,19 +129,19 @@ public class Mecanografia extends JFrame {
 		});
 		
 		
-		btnToHst.setBounds(137, 174, 150, 57);
+		btnToHst.setBounds(getWidth()*2+120 , getHeight()*2, 250, 100);
 		Pprincipal.add(btnToHst);
 		main.add(practica, "prc");
 		practica.setLayout(null);
-		lblPrcTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPrcTitle.setBounds(128, 72, 180, 36);
+		lblPrcTitle.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		lblPrcTitle.setBounds(getWidth()*2-150, getHeight()*2-500, 400, 50);
 		
 		practica.add(lblPrcTitle);
 		
 		
 		lblMuestra.setVisible(false);
-		lblMuestra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMuestra.setBounds(303, 29, 547, 48);
+		lblMuestra.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblMuestra.setBounds(getWidth()*2-300, getHeight()*2-200, 1000, 50);
 		practica.add(lblMuestra);
 		
 		btnPrcEmpezar = new JButton("Empezar");
@@ -150,7 +150,7 @@ public class Mecanografia extends JFrame {
 				practica();
 			}
 		});
-		btnPrcEmpezar.setBounds(168, 165, 89, 23);
+		btnPrcEmpezar.setBounds(getWidth()*2-50, getHeight()*2, 200, 50);
 		practica.add(btnPrcEmpezar);
 		
 		
@@ -177,7 +177,7 @@ public class Mecanografia extends JFrame {
 			}
 		});
 		txtEscribir.setVisible(false);
-		txtEscribir.setBounds(328, 178, 305, 20);
+		txtEscribir.setBounds(getWidth()*2-150, getHeight()*2, 505, 50);
 		practica.add(txtEscribir);
 		txtEscribir.setColumns(10);
 		lblTimer.setFont(new Font("Tahoma", Font.PLAIN, 25));
