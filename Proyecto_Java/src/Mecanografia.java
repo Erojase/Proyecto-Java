@@ -166,10 +166,11 @@ public class Mecanografia extends JFrame {
 					trozo2 = frase.substring(longi+6,frase.length());
 					labelPrc = html + "<font color=\"red\">" + trozo1 + "</font>" + trozo2;
 					lblMuestra.setText(labelPrc);
-					System.out.println(labelPrc);
+					//System.out.println(labelPrc);
 				}
 				else {
 					lblMuestra.setText(labelPrc);
+					txtEscribir.setText(TypedPrc.substring(0,TypedPrc.length()-1));
 				}
 				//System.out.println("longi es: "+longi);
 				//System.out.println(labelPrc.substring(6, longi+6)+" es igual a "+TypedPrc);
