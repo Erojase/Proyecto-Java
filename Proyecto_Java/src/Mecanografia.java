@@ -1,22 +1,22 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Rectangle;
 import java.awt.Dimension;
-import javax.swing.JTextField;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.awt.Toolkit;
+import java.awt.Window;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class Mecanografia extends JFrame {
 
@@ -32,6 +32,10 @@ public class Mecanografia extends JFrame {
 	private final JLabel lblZonaDeHistoria = new JLabel("Zona de Historia");
 	private JLabel lblMuestra = new JLabel("Texto de muestra");
 	private JButton btnPrcEmpezar;
+	private JButton btnHistEmpezar;
+	private JLabel lblTitle;
+	
+	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	private String frase = "<html>buenas tardes por la mañana, es un gran dia y me quiero morir</html>";
 	private JTextField txtEscribir = new JTextField();
@@ -66,6 +70,7 @@ public class Mecanografia extends JFrame {
 	public void nueva_frase() {
 		LeerArchivo file = new LeerArchivo();
 		int random = (int)(Math.random()*3+1);
+		System.out.println(random);
 		frase = "<html>"+file.get_frase(random)+"</html>";
 		lblMuestra.setText(frase);
 		txtEscribir.setText("");
@@ -131,6 +136,11 @@ public class Mecanografia extends JFrame {
 				cl.show(main, "prc");
 			}
 		});
+		
+		lblTitle = new JLabel("Nombre aqui manin");
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 75));
+		lblTitle.setBounds((int)screenSize.getWidth()/2-this.getWidth(), (int)screenSize.getHeight()/2-this.getHeight(), 978, 240);
+		Pprincipal.add(lblTitle);
 		btnToPrc.setBounds(getWidth()*2-280 , getHeight()*2, 250, 100);
 		
 		Pprincipal.add(btnToPrc);
@@ -145,6 +155,11 @@ public class Mecanografia extends JFrame {
 		Pprincipal.add(btnToHst);
 		main.add(practica, "prc");
 		practica.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("PPM actual:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setBounds(348, 103, 224, 47);
+		practica.add(lblNewLabel);
 		lblPrcTitle.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		lblPrcTitle.setBounds(getWidth()*2-150, getHeight()*2-500, 400, 50);
 		
@@ -205,6 +220,10 @@ public class Mecanografia extends JFrame {
 		lblZonaDeHistoria.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		historia.add(lblZonaDeHistoria);
+		
+		btnHistEmpezar = new JButton("Empezar");
+		btnHistEmpezar.setBounds(149, 158, 89, 23);
+		historia.add(btnHistEmpezar);
 		cl.show(main, "prin");
 		
 		
