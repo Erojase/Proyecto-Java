@@ -22,6 +22,9 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 
 public class Mecanografia extends JFrame {
 
@@ -38,6 +41,7 @@ public class Mecanografia extends JFrame {
 	private JLabel lblMuestra = new JLabel("Texto de muestra");
 	private JButton btnPrcEmpezar;
 	private JButton btnHistEmpezar;
+	JLabel GifPrincipal;
 	private JLabel lblTitle;
 	
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -51,6 +55,8 @@ public class Mecanografia extends JFrame {
 	private String labelPrc;
 	private String TypedPrc;
 	private int longi = 0;
+	private final JLabel Diagonal = new JLabel("");
+	private final JLabel ImgScore = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -121,7 +127,7 @@ public class Mecanografia extends JFrame {
 	
 	public Mecanografia() {
 		
-		
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 
@@ -130,8 +136,9 @@ public class Mecanografia extends JFrame {
 		main.setMinimumSize(new Dimension(100, 100));
 		main.setLayout(cl);
 		
-		main.setBorder(new EmptyBorder(5, 5, 5, 5));
+		main.setBorder(null);
 		setContentPane(main);
+		Pprincipal.setBackground(Color.BLACK);
 		
 		main.add(Pprincipal, "prin");
 		main.setSize(100, 100);
@@ -144,14 +151,28 @@ public class Mecanografia extends JFrame {
 		});
 		
 		lblTitle = new JLabel("Nombre aqui manin");
-		lblTitle.setBackground(Color.WHITE);
-		lblTitle.setOpaque(true);
+		lblTitle.setForeground(Color.WHITE);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 75));
-		lblTitle.setBounds((int)screenSize.getWidth()/2-this.getWidth()+100, (int)screenSize.getHeight()/2-this.getHeight()-200, 978, 240);
+		lblTitle.setBounds((int)screenSize.getWidth()/2-this.getWidth()+100, (int)screenSize.getHeight()/2-this.getHeight()-250, 978, 140);
 		Pprincipal.add(lblTitle);
 		btnToPrc.setBounds(getWidth()*2+400 , (int)(getHeight()*1.5), 250, 100);
 		
 		Pprincipal.add(btnToPrc);
+		btnToHst.setBorderPainted(false); 
+		btnToHst.setContentAreaFilled(false); 
+		btnToHst.setFocusPainted(false); 
+		btnToHst.setOpaque(false);
+		btnToHst.setIcon(new ImageIcon("images\\Modo_Historia.png"));
+		btnToHst.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				GifPrincipal.setIcon(new ImageIcon("images\\Nameless_Monster_wide.gif"));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				GifPrincipal.setIcon(new ImageIcon("images\\Nameless_Monster.png"));
+			}
+		});
 		btnToHst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cl.show(main, "hst");
@@ -159,12 +180,21 @@ public class Mecanografia extends JFrame {
 		});
 		
 		
-		btnToHst.setBounds(getWidth()*2-500 ,(int)(getHeight()*1.5), 250, 100);
+		btnToHst.setBounds(getWidth()*2-500 ,(int)(getHeight()*1.5), 350, 100);
 		Pprincipal.add(btnToHst);
+		ImgScore.setIcon(new ImageIcon("C:\\Users\\admin-dam1b\\Desktop\\Workspace_3\u00AA_eva\\Proyecto_Java\\images\\score.png"));
+		ImgScore.setBounds(800, 150, 1426, 860);
 		
-		JLabel GifPrincipal = new JLabel("");
-		GifPrincipal.setIcon(new ImageIcon("C:\\Users\\admin-dam1b\\Desktop\\Workspace_3\u00AA_eva\\Proyecto_Java\\images\\Nameless_Monster.gif"));
-		GifPrincipal.setBounds(0, 0, 1188, 963);
+		Pprincipal.add(ImgScore);
+		Diagonal.setIcon(new ImageIcon("images\\diagonal.png"));
+		Diagonal.setBounds(-250, 0, 2000, 2000);
+		
+		Pprincipal.add(Diagonal);
+		
+		GifPrincipal = new JLabel("");
+		GifPrincipal.setIcon(new ImageIcon("images\\Nameless_Monster.png"));
+		//GifPrincipal.setIcon(new ImageIcon("images\\Nameless_Monster.gif"));
+		GifPrincipal.setBounds(0, 0, 1188, 1100);
 		Pprincipal.add(GifPrincipal);
 		main.add(practica, "prc");
 		practica.setLayout(null);
