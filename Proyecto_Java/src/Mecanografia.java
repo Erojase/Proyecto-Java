@@ -10,6 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Mecanografia extends JFrame {
 
@@ -121,6 +126,7 @@ public class Mecanografia extends JFrame {
 		setExtendedState(MAXIMIZED_BOTH);
 
 		setBounds(200, 100, 450, 300);
+		
 		main.setMinimumSize(new Dimension(100, 100));
 		main.setLayout(cl);
 		
@@ -138,10 +144,12 @@ public class Mecanografia extends JFrame {
 		});
 		
 		lblTitle = new JLabel("Nombre aqui manin");
+		lblTitle.setBackground(Color.WHITE);
+		lblTitle.setOpaque(true);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 75));
-		lblTitle.setBounds((int)screenSize.getWidth()/2-this.getWidth(), (int)screenSize.getHeight()/2-this.getHeight(), 978, 240);
+		lblTitle.setBounds((int)screenSize.getWidth()/2-this.getWidth()+100, (int)screenSize.getHeight()/2-this.getHeight()-200, 978, 240);
 		Pprincipal.add(lblTitle);
-		btnToPrc.setBounds(getWidth()*2-280 , getHeight()*2, 250, 100);
+		btnToPrc.setBounds(getWidth()*2+400 , (int)(getHeight()*1.5), 250, 100);
 		
 		Pprincipal.add(btnToPrc);
 		btnToHst.addActionListener(new ActionListener() {
@@ -151,8 +159,13 @@ public class Mecanografia extends JFrame {
 		});
 		
 		
-		btnToHst.setBounds(getWidth()*2+120 , getHeight()*2, 250, 100);
+		btnToHst.setBounds(getWidth()*2-500 ,(int)(getHeight()*1.5), 250, 100);
 		Pprincipal.add(btnToHst);
+		
+		JLabel GifPrincipal = new JLabel("");
+		GifPrincipal.setIcon(new ImageIcon("C:\\Users\\admin-dam1b\\Desktop\\Workspace_3\u00AA_eva\\Proyecto_Java\\images\\Nameless_Monster.gif"));
+		GifPrincipal.setBounds(0, 0, 1188, 963);
+		Pprincipal.add(GifPrincipal);
 		main.add(practica, "prc");
 		practica.setLayout(null);
 		
